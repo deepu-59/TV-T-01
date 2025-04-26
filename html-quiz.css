@@ -1,0 +1,105 @@
+/* General body styling */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Dark mode */
+.dark-mode {
+  background: #121212;
+  color: #f9f9f9;
+}
+
+/* Quiz container styling */
+.quiz-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Dark mode quiz container */
+.dark-mode .quiz-container {
+  background: #1f1f1f;
+}
+
+/* Header inside quiz */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Main heading */
+h1 {
+  margin: 0 0 20px;
+}
+
+/* Question text */
+#question {
+  font-size: 1.4rem;
+}
+
+/* Options list */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Each option item */
+li {
+  margin: 10px 0;
+  padding: 12px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Dark mode list item */
+.dark-mode li {
+  background: #333;
+}
+
+/* Hover effect on options */
+li:hover {
+  background: #d0d0d0;
+}
+
+/* Selected option */
+.selected {
+  background: #4caf50 !important;
+  color: white;
+}
+
+/* Buttons container */
+.btn-group {
+  margin-top: 20px;
+}
+
+/* Buttons general styling */
+button {
+  padding: 10px 20px;
+  margin: 5px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Button hover */
+button:hover {
+  background: #45a049;
+}
+
+/* Hide elements */
+.hidden {
+  display: none;
+}

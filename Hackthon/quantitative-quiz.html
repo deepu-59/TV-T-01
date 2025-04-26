@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quantitative Analysis Quiz</title>
+  <link rel="stylesheet" href="logical-quiz.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Quantitative Analysis Quiz</h1>
+  </header>
+
+  <main>
+    <div id="timer"></div>
+    <div id="quiz-container">
+      <div id="question-number"></div>
+      <div id="question-text"></div>
+      <div id="options-container"></div>
+    </div>
+
+    <div class="quiz-buttons">
+      <button onclick="prevQuestion()">Previous</button>
+      <button onclick="saveAndNext()">Save & Next</button>
+      <button onclick="submitQuiz()">Submit</button>
+    </div>
+
+    <div id="result-container" style="display: none;">
+      <div class="result-content">
+        <div class="result-chart">
+          <canvas id="result-chart"></canvas>
+        </div>
+        <div class="result-details">
+          <h2 id="score-text"></h2>
+          <p id="analysis-text"></p>
+        </div>
+      </div>
+      <div class="result-buttons">
+        <button onclick="retryQuiz()">Retry</button>
+        <button onclick="goBackToQuizzes()">Return to quizzes</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="quantitative-quiz.js"></script>
+</body>
+</html>

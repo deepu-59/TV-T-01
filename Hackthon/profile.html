@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1a3c34; /* Dark teal background */
+            position: relative;
+            overflow: hidden;
+            /* Fallback background with emoji-like pattern */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ctext x='0' y='30' font-size='20' fill='%23ffd700' opacity='0.1'%3E📐✏️📏📝➕➖✖️➗%3C/text%3E%3C/svg%3E");
+            background-repeat: repeat; /* Repeat the pattern */
+            background-size: 60px 60px; /* Adjust size for density */
+        }
+        .login-container {
+            background-color: #2a4d47;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 300px;
+            color: #e0e0e0;
+            position: relative;
+            z-index: 1;
+        }
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        .student-logo {
+            font-size: 40px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #e0f7fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px auto;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+        .student-info p {
+            margin: 8px 0;
+            font-size: 14px;
+            color: #b0bec5;
+        }
+        .student-info p span {
+            font-weight: bold;
+            color: #e0e0e0;
+        }
+        .login-btn {
+            background-color: #ff5a5f;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .login-btn:hover {
+            background-color: #e04e53;
+        }
+        .heading {
+            color: #ffd700;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .subheading {
+            color: #b0bec5;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="heading">Student Profile</div>
+        <div class="subheading">View your details below</div>
+        <img src="https://via.placeholder.com/100" alt="Profile Picture" class="profile-pic">
+        <div class="student-logo">
+            🎓
+        </div>        
+        <div class="student-info">
+            <p><span>Username:</span> student123</p>
+            <p><span>Name:</span> John Doe</p>
+            <p><span>Roll No:</span> 101</p>
+            <p><span>Class:</span> 10A</p>
+        </div>
+        <button>
+        <a href="bye.html" style="text-decoration: none; color: #f4f2f2; font-size: 14px; background-color:rgb(232, 112, 13); margin-top: 10px;">GO TO HOME</a>
+    </button>
+    </div>
+</body>
+</html>

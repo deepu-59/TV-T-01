@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quizzard</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        fontFamily: {
+          sans: ['Poppins', 'sans-serif']
+        },
+        extend: {
+          colors: {
+            coral: '#FF6B6B',
+            lemon: '#FFE66D',
+            teal: '#4ECDC4',
+            cyan: '#1A535C',
+            lightbg: '#fefae0',
+            darkbg: '#1A535C'
+          },
+          animation: {
+            float: "float 6s ease-in-out infinite"
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' }
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    #sidebar {
+      transition: width 0.3s ease-in-out;
+    }
+    #sidebar.sidebar-collapsed {
+      width: 60px;
+    }
+    #sidebar.sidebar-expanded {
+      width: 240px;
+    }
+    .sidebar-label {
+      transition: opacity 0.3s ease-in-out;
+    }
+    #sidebar.sidebar-collapsed .sidebar-label {
+      opacity: 0;
+    }
+    .icon-float {
+      position: absolute;
+      animation: float 6s ease-in-out infinite;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body class="bg-lightbg text-cyan dark:bg-darkbg dark:text-lemon overflow-x-hidden relative">
+
+  <!-- Floating Icons Background -->
+  <div class="absolute inset-0 -z-10 overflow-hidden">
+    <span class="icon-float text-5xl" style="top:10%; left:5%;">➕</span>
+    <span class="icon-float text-6xl" style="top:30%; left:80%;">💻</span>
+    <span class="icon-float text-5xl" style="top:60%; left:10%;">📐</span>
+    <span class="icon-float text-4xl" style="top:50%; left:70%;">🔣</span>
+    <span class="icon-float text-5xl" style="top:20%; left:45%;">📘</span>
+    <span class="icon-float text-6xl" style="top:70%; left:50%;">🧮</span>
+    <span class="icon-float text-5xl" style="top:80%; left:20%;">🔧</span>
+    <span class="icon-float text-5xl" style="top:35%; left:15%;">💡</span>
+  </div>
+
+  <!-- Header -->
+  <div class="flex justify-between items-center px-6 py-4 bg-white dark:bg-cyan shadow-md z-20 relative">
+    <div class="flex items-center gap-3">
+      <button id="sidebarToggle" class="md:hidden px-3 py-2 bg-coral text-white rounded">☰</button>
+      <!-- Floating SVG Logo -->
+      <svg class="w-10 h-10 animate-float" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" data-aos="fade-right">
+        <circle cx="50" cy="50" r="40" fill="#FF6B6B"/>
+        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="32" font-family="Poppins" fill="white" font-weight="800">Q</text>
+      </svg>
+      <span class="text-2xl font-extrabold bg-gradient-to-r from-coral via-lemon to-teal bg-clip-text text-transparent" data-aos="fade-right" data-aos-delay="200">Quizzard</span>
+    </div>
+    <div class="flex gap-3 items-center">
+      <button id="darkModeToggle" class="px-4 py-2 bg-teal text-white font-semibold rounded hover:opacity-90">Toggle Theme</button>
+      <button id="logoutBtn" class="flex items-center gap-2 px-4 py-2 bg-coral text-white font-semibold rounded hover:opacity-90">🔓 Logout</button>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div id="sidebar" class="sidebar-collapsed md:flex flex-col bg-white dark:bg-cyan h-screen fixed shadow-lg z-10">
+    <div class="px-4 py-4">
+      <h2 class="sidebar-label text-lg font-semibold text-cyan dark:text-lemon">Navigation</h2>
+    </div>
+    <nav class="flex flex-col gap-2 px-4">
+      <a href="#" class="flex items-center gap-2 py-2 text-cyan dark:text-lemon">🏠 <span class="sidebar-label">Home</span></a>
+      <a href="quizzes.html" class="flex items-center gap-2 py-2 text-cyan dark:text-lemon">📚 <span class="sidebar-label">Quizzes</span></a>
+      <a href="#" class="flex items-center gap-2 py-2 text-cyan dark:text-lemon">📈 <span class="sidebar-label">Performance</span></a>
+      <a href="#" class="flex items-center gap-2 py-2 text-cyan dark:text-lemon">⚙ <span class="sidebar-label">Settings</span></a>
+      <a href="profile.html" class="flex items-center gap-2 py-2 text-cyan dark:text-lemon">👤 <span class="sidebar-label">Profile</span></a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <main class="md:ml-[60px] md:pl-[200px] pt-10 px-6 space-y-20 relative z-10">
+    <!-- Hero Section -->
+    <section class="flex flex-col items-center justify-center text-center min-h-[60vh]" data-aos="fade-up">
+      <h1 class="text-5xl font-extrabold text-coral dark:text-lemon mb-4" data-aos="zoom-in" data-aos-delay="200">Welcome to Quizzard</h1>
+      <p class="text-xl text-cyan dark:text-white/80" data-aos="fade-up" data-aos-delay="400">Challenge your brain. Beat your score. Become a Quizzard!</p>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="py-12" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-6 text-coral dark:text-lemon text-center">Choose a Quiz</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white dark:bg-white/10 p-6 rounded-xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="100">
+          <h3 class="text-2xl font-semibold text-cyan dark:text-lemon mb-2">🧠 General Knowledge</h3>
+          <p class="text-sm text-cyan dark:text-white/60 mb-4">Test your awareness on various topics.</p>
+          <button class="px-4 py-2 bg-coral text-white font-semibold rounded w-full">Start GK Quiz</button>
+        </div>
+        <div class="bg-white dark:bg-white/10 p-6 rounded-xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="200">
+          <h3 class="text-2xl font-semibold text-cyan dark:text-lemon mb-2">💻 Programming</h3>
+          <p class="text-sm text-cyan dark:text-white/60 mb-4">Select a language to test your skills.</p>
+          <div class="space-y-2">
+            <button class="w-full px-4 py-2 bg-teal text-white rounded hover:bg-cyan">C Language</button>
+            <button class="w-full px-4 py-2 bg-teal text-white rounded hover:bg-cyan">HTML</button>
+            <button class="w-full px-4 py-2 bg-teal text-white rounded hover:bg-cyan">Python</button>
+          </div>
+        </div>
+        <div class="bg-white dark:bg-white/10 p-6 rounded-xl shadow-lg hover:scale-105 transition" data-aos="zoom-in" data-aos-delay="300">
+          <h3 class="text-2xl font-semibold text-cyan dark:text-lemon mb-2">🧮 Aptitude</h3>
+          <p class="text-sm text-cyan dark:text-white/60 mb-4">Sharpen your logical reasoning and problem-solving.</p>
+          <button class="px-4 py-2 bg-coral text-white font-semibold rounded w-full">Start Aptitude Quiz</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Firebase + Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyB1ORLyoCOHC8oXQipO130d6Le1rqexOEc",
+      authDomain:  "quiz-app-e4963.firebaseapp.com",
+      projectId: "quiz-app-e4963",
+      appId: "1:724988974222:web:6a5700b7719ff0ab0165df"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      auth.signOut().then(() => {
+        window.location.href = "index.html";
+      });
+    });
+
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        window.location.href = "index.html";
+      }
+    });
+
+    const html = document.documentElement;
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const darkModeToggle = document.getElementById('darkModeToggle');
+
+    if (localStorage.getItem('darkMode') === 'true') {
+      html.classList.add('dark');
+    }
+
+    darkModeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('darkMode', html.classList.contains('dark'));
+    });
+
+    sidebarToggle?.addEventListener('click', () => {
+      sidebar.classList.toggle('sidebar-expanded');
+      sidebar.classList.toggle('sidebar-collapsed');
+    });
+
+    sidebar.addEventListener('mouseenter', () => {
+      sidebar.classList.remove('sidebar-collapsed');
+      sidebar.classList.add('sidebar-expanded');
+    });
+
+    sidebar.addEventListener('mouseleave', () => {
+      sidebar.classList.remove('sidebar-expanded');
+      sidebar.classList.add('sidebar-collapsed');
+    });
+
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+  </script>
+</body>
+</html>

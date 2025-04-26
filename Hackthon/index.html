@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Quizzard</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        fontFamily: {
+          sans: ['Poppins', 'sans-serif']
+        },
+        extend: {
+          colors: {
+            coral: '#FF6B6B',
+            lemon: '#FFE66D',
+            teal: '#4ECDC4',
+            cyan: '#1A535C',
+            lightbg: '#fefae0',
+            darkbg: '#1A535C'
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-lightbg dark:bg-darkbg text-cyan dark:text-lemon min-h-screen flex items-center justify-center">
+  <div class="bg-white dark:bg-white/10 p-8 rounded-lg shadow-lg w-full max-w-md">
+    <div class="text-center mb-6">
+      <!-- Logo -->
+      <svg class="w-16 h-16 mx-auto mb-2 animate-bounce" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="40" fill="#FF6B6B"/>
+        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="36" font-family="Poppins" fill="white" font-weight="800">Q</text>
+      </svg>
+      <h1 class="text-3xl font-bold text-coral dark:text-lemon">Login to Quizzard</h1>
+      <p class="text-sm text-cyan dark:text-white/70">Challenge your brain. Beat your score.</p>
+    </div>
+
+    <form id="loginForm" class="space-y-4">
+      <input type="email" id="email" placeholder="Email" required class="w-full px-4 py-2 rounded bg-lightbg dark:bg-darkbg border border-cyan dark:border-lemon focus:outline-none focus:ring-2 focus:ring-coral" />
+      <input type="password" id="password" placeholder="Password" required class="w-full px-4 py-2 rounded bg-lightbg dark:bg-darkbg border border-cyan dark:border-lemon focus:outline-none focus:ring-2 focus:ring-coral" />
+      <button type="submit" class="w-full px-4 py-2 bg-coral text-white rounded font-semibold hover:bg-red-500 transition">Login</button>
+      <p id="error" class="text-sm text-red-500 text-center mt-2 hidden">Invalid email or password.</p>
+    </form>
+  </div>
+
+  <!-- Firebase Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyB1ORLyoCOHC8oXQipO130d6Le1rqexOEc",
+      authDomain: "quiz-app-e4963.firebaseapp.com",
+      projectId:"quiz-app-e4963",
+      appId: "1:724988974222:web:6a5700b7719ff0ab0165df"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          window.location.href = "bye.html";
+        })
+        .catch(() => {
+          document.getElementById('error').classList.remove('hidden');
+        });
+    });
+
+    // Redirect if already logged in
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        window.location.href = "bye.html";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('image.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* Sky blue gradient */
+    background: linear-gradient(135deg, #38bdf8 0%, #7dd3fc 100%);
+    position: relative;
+    overflow: hidden; /* Prevent shades overflow */
+}
+
+/* Pseudo-elements for circular shades */
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px); /* Soft blur for ethereal effect */
+    pointer-events: none; /* Prevent interaction interference */
+}
+
+body::before {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(
+        circle,
+        rgba(186, 230, 253, 0.4),
+        transparent
+    ); /* Lighter sky blue shade */
+    animation: move1 12s ease-in-out infinite;
+}
+
+body::after {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(
+        circle,
+        rgba(125, 211, 252, 0.35),
+        transparent
+    ); /* Smaller sky blue shade */
+    animation: move2 15s ease-in-out infinite;
+}
+
+/* Pseudo-elements for animated question marks */
+body {
+    --question-mark-count: 10; /* Number of question marks */
+}
+
+body::before,
+body::after,
+body [class*="question-mark-"] {
+    pointer-events: none;
+}
+
+body::before,
+body::after {
+    z-index: 0; /* Ensure below wrapper */
+}
+
+@keyframes fadeQuestionMark {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0.5) translate(var(--tx), var(--ty));
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1) translate(var(--tx), var(--ty));
+    }
+}
+
+/* Define question mark animations with random positions and delays */
+.question-mark-1::before,
+.question-mark-2::before,
+.question-mark-3::before,
+.question-mark-4::before,
+.question-mark-5::before,
+.question-mark-6::before,
+.question-mark-7::before,
+.question-mark-8::before,
+.question-mark-9::before,
+.question-mark-10::before {
+    content: '?';
+    position: absolute;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 40px;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    animation: fadeQuestionMark 5s infinite ease-in-out;
+    z-index: 0; /* Below wrapper */
+}
+
+.question-mark-1::before {
+    --tx: 10vw;
+    --ty: 20vh;
+    animation-delay: 0.5s;
+}
+
+.question-mark-2::before {
+    --tx: -30vw;
+    --ty: -10vh;
+    animation-delay: 1.2s;
+}
+
+.question-mark-3::before {
+    --tx: 40vw;
+    --ty: 50vh;
+    animation-delay: 2s;
+}
+
+.question-mark-4::before {
+    --tx: -20vw;
+    --ty: 70vh;
+    animation-delay: 0.8s;
+}
+
+.question-mark-5::before {
+    --tx: 50vw;
+    --ty: -30vh;
+    animation-delay: 1.5s;
+}
+
+.question-mark-6::before {
+    --tx: -40vw;
+    --ty: 10vh;
+    animation-delay: 2.3s;
+}
+
+.question-mark-7::before {
+    --tx: 20vw;
+    --ty: -50vh;
+    animation-delay: 1s;
+}
+
+.question-mark-8::before {
+    --tx: -10vw;
+    --ty: 30vh;
+    animation-delay: 1.8s;
+}
+
+.question-mark-9::before {
+    --tx: 30vw;
+    --ty: -20vh;
+    animation-delay: 2.5s;
+}
+
+.question-mark-10::before {
+    --tx: -50vw;
+    --ty: 40vh;
+    animation-delay: 0.3s;
+}
+
+/* Animations for circular shades */
+@keyframes move1 {
+    0%, 100% {
+        transform: translate(-20%, -20%);
+    }
+    25% {
+        transform: translate(60%, 30%);
+    }
+    50% {
+        transform: translate(10%, 80%);
+    }
+    75% {
+        transform: translate(70%, -10%);
+    }
+}
+
+@keyframes move2 {
+    0%, 100% {
+        transform: translate(30%, 50%);
+    }
+    25% {
+        transform: translate(-30%, -20%);
+    }
+    50% {
+        transform: translate(50%, -50%);
+    }
+    75% {
+        transform: translate(-10%, 60%);
+    }
+}
+
+/* Wrapper and other styles */
+.wrapper {
+    width: 420px;
+    background: rgba(255, 255, 255, 0.1); /* Subtle glass tint */
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Glowing border */
+    backdrop-filter: blur(35px); /* Premium glass blur */
+    box-shadow: 0 0 15px rgba(0, 41, 107, 0.1); /* Soft blue shadow */
+    color: #fff;
+    border-radius: 20px; /* Smoother corners */
+    padding: 30px 40px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1; /* Ensure wrapper is above shades and question marks */
+}
+
+.wrapper:hover {
+    transform: translateY(-5px); /* Subtle lift on hover */
+    box-shadow: 0 0 25px rgba(0, 149, 255, 0.15);
+}
+
+.wrapper h1 {
+    font-size: 36px;
+    text-align: center;
+    text-shadow: 0 0 8px rgba(0, 102, 255, 0.2); /* Soft blue glow */
+}
+
+.wrapper h4 {
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    margin: 10px 0;
+    text-shadow: 0 0 8px rgba(0, 102, 255, 0.2);
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.07); /* Glass effect for inputs */
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 45px 0 20px;
+    outline: none;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.input-box input:focus {
+    border-color: rgba(255, 255, 255, 0.6); /* Glow on focus */
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.input-box input::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Softer placeholder */
+}
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+}
+
+.remember-forgot label input {
+    accent-color: #1A535C; /* Sky blue accent */
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.remember-forgot a:hover {
+    color: #e0f2fe; /* Very light blue on hover */
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    height: 45px;
+    background: linear-gradient(135deg, #0ea5e9, #38bdf8); /* Sky blue gradient button */
+    border: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 102, 255, 0.2);
+    cursor: pointer;
+    font: 600 16px 'Poppins', sans-serif;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05); /* Slight scale on hover */
+    box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+}
+
+.register {
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0;
+    color: #fff;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+}
+
+.register a {
+    color: #bae6fd; /* Light sky blue link */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.register a:hover {
+    color: #DBF3FF; /* Very light blue on hover */
+    text-decoration: underline;
+}
+
+.error {
+    color: #EF4444; /* Keep red for error visibility */
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: center;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}

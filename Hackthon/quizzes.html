@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1A3C34;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #FFD700;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .quiz-box {
+            background-color: #2A5C52;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+        }
+        .quiz-box h2 {
+            color: #FFD700;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .quiz-box p {
+            color: #A9C7C1;
+            margin-bottom: 20px;
+        }
+        .start-btn {
+            background-color: #FF4D4D;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .start-btn:hover {
+            background-color: #FF6666;
+        }
+        .programming-options {
+            margin-top: 10px;
+        }
+        .programming-options button {
+            background-color: #4D9980;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .programming-options button:hover {
+            background-color: #66B399;
+        }
+        .icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CHOOSE A QUIZ</h1>
+        <div class="quiz-box">
+            <span class="icon">🧠</span>
+            <h2>GENERAL KNOWLEDGE</h2>
+            <p>Test your awareness on various topics.</p>
+            <div class="programming-options">
+              <button ><a href="current-affairs-quiz.html"> Current Affairs </a></button>
+              <button><a href="history-quiz.html"> History </a></button>
+              <button><a href="geography-quiz.html">Geography</a></button>
+          </div>
+        </div>
+        <div class="quiz-box">
+            <span class="icon">💻</span>
+            <h2>PROGRAMMING</h2>
+            <p>Select a language to test your skills.</p>
+            <div class="programming-options">
+                <button><a href="c-quiz.html">C Language</a></button>
+                <button><a href="html-quiz.html">HTML</a></button>
+                <button><a href="python-quiz.html">Python</a></button>
+            </div>
+        </div>
+        <div class="quiz-box">
+            <span class="icon">🛠️</span>
+            <h2>Aptitude</h2>
+            <p>Sharpen your logical reasoning and problem-solving.</p>
+            <div class="programming-options">
+              <button ><a href="quantitative-quiz.html">Quantitative</a></button>
+              <button ><a href="verbal-quiz.html" > Verbal Ability</a></button>
+              <button ><a href="logical-quiz.html" > Logical Reasoning</a></button>
+          </div>
+        </div>
+    </div>
+
+    <script>
+        function startQuiz(quizType) {
+            alert(`Starting ${quizType} Quiz!`);
+            // You can add logic here to redirect to the actual quiz page or load quiz questions
+            // For example: window.location.href = `${quizType.toLowerCase().replace(' ', '-')}-quiz.html`;
+        }
+    </script>
+</body>
+</html>
